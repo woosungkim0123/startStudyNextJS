@@ -1,34 +1,120 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NextJS 소개
 
-## Getting Started
+# 라이브러리는 개발자로서 내가 사용하는 것
 
-First, run the development server:
+## 내가 라이브러리를 불러와서 라이브러리로 무언가를 하는것
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## 프레임워크는 나의 코드를 불러오는것
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 프레임워크는 네가 코드를 적절한 위치에 잘 적기만 한다면 프레임워크가 너의 코드를 불러와서 모든 걸 동작하게함
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+라이브러리는 사용할떄 네가 원하는대로 코드를 작성할 수 있고 랑비르러ㅣ는 사용하고 싶을때 사용할 수 있음
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+next.js 프로젝트를 만들었을때 index.js가 없음
+cra로 만들었을때 index.js에 reactdom부분이 있음 -> 이상태로 시작
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+cra를 하게 되면 항상 app component로 시작하는데 앱컴포넌트는 비워져있음
+네가 결정할 수 있음 라우터폴더를 만들던 컴포넌트를 만들던 내가 직접 코드를 짜기때문에 내가 왕
 
-## Learn More
+내가 언제 리액트를 부를지 어떤 폴더 구조로 만들지 정하는 것
 
-To learn more about Next.js, take a look at the following resources:
+라우터라 하지않고 컴포넌트라 하지않고 react앱을 만드는데 많은 자유도가 있음
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+이것이 프레임워크와 라이브러맃 ㅏ이
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+라이브러리를 사용할 떄는 네가 원할떄 언제든 어떤방법으로든 부르면된다 문제 될게 없음
 
-## Deploy on Vercel
+next.js 같은 프레임워크에서는 특정한 규칙을 따라 특정한 걸 해야한다.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+그것을 따랏을떄 정상적으로 작동한다.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+react에서는 reactdom.render가 있고 react앱이 만들어졌으 때의 모든 것을 볼 수있다.,
+
+next.js에서는 이 과정을 ㅋ스텀할 수 있는 곳은 없다
+
+우리가 할 수 있는 것은 pages안에 무언갈 만드는것뿐
+
+next.js 아주 깊은 어딘가의 코드에서 next.js는 이걸 하고 있는 것 -> 우리가 거기로 직접 접근하지못함
+
+추상화(abstraction) 시킨것 그게 바로 프레임워크
+
+프레임워크는 코드를 어떤 곳에 넣으면 프레임워크가 그 코드를 부르는 형태
+
+리액트는 우리가 부르고 원할떄 사용하는 라이브러리
+프레임워크는 약간 집, 내가 코드를 적절한 곳에 넣어야하는것
+내가 집을 수정할 수 없음
+
+나의 코드가 게스트 같은 느낌
+
+라이브러리와 프레임워크의 주요 차이점
+
+라이브러리와 프레임워크의 주요 차이점은 "Inversion of Control"(통제의 역전)입니다.
+라이브러리에서 메서드를 호출하면 사용자가 제어할 수 있습니다.
+그러나 프레임워크에서는 제어가 역전되어 프레임워크가 사용자를 호출합니다.
+
+라이브러리
+사용자가 파일 이름이나 구조 등을 정하고, 모든 결정을 내림
+
+프레임워크
+파일 이름이나 구조 등을 정해진 규칙에 따라 만들고 따름
+
+앱에 있는 페이지들이 미리 렌더링 된다는 점
+
+static(정적)으로 생성됨
+
+cra -> client-side render 하는 앱을 만듬
+
+client-sdie render : 너의 브라우저가 유저가 보는 ui를 만드는 모든 것을 한다는 것을 의미
+
+브라우저가 자바스크립트를 가져와서 client-sdie의 자바스크립트가 모든 ui를 만드는 것
+
+유저가 보는건 index.html에 div id=root
+
+사실상 비어있는 div
+자바스크립트가 비활성화된다면 유저가 보게 될 것
+
+클라이언트 사이드렌더링을 실행하기 위해서는 브라우저는 자바스크립트를 필요로함(이경우는 잘없어서 비교가 안됨)
+
+네트워크를 3g로 연결해서 아주 느린 모바일 연결로 사이트를 열어보면 흰화면떳다가 자바스크립트 코드가 왔을때만 ui를 만들수 있음
+
+브라우저는 div=root 만을 가져오고 브라우저가 자바스크립트, react 등 모든 것을 fetch한 후에야 ui가 보임
+
+next.js로 만든ㅍ ㅔ이지를 자바스크립트 비활성화하고 새로고침하면 (같은 방법으로 동작하지만 차이는 소스코드에 있음)
+
+페이지의 소스코드에 실제 HTML이 있는 걸 볼 수 있음
+
+진짜 HTML이 실제로 여기 있ㄱ는 걸 볼 수 있다
+
+매우 느린 연결 OR 자바스크립트가 완전히 비활성화 되어있음 적어도 HTML을 볼 수 있음
+
+너의 페이지는 ㅣㅁ리 렌더링 됨. NEXT.JS에 의해 이것들이 미리 생성되는 것
+
+유저가 페이지를 요청하면 그들은 진짜 HTML을 얻음
+
+거기다 next.js는 초기 상태로 pre-rendering함
+
+이 페이지가 로딩될떄 정말 많은 스크립트를 같이 요청함
+
+페이지를 열면 보게 되는 것이 초기 html 이고
+
+javascript파일 즉, react.js가 전송되었을때 이게 react.js앱이됨
+
+react.js를 프론트엔드 안에서 실행하는 것을 hydration 이라고 한다
+
+next.js는 react.js를 백엔드에서 동작시켜서 이 페이지를 미리 만드는데 이게 컴포넌트들을 렌더링시킴
+
+렌더링이 끝났을때 그건 html이 되고 next.js는 그 hmtl을 페이지의 소스코드에 넣어줌
+
+유저는 자바스크립트와 react.js가 로딩되지 않았더라도 콘텐츠를 볼 수 있게 됨
+
+react.js가 로딩되었을때 기본적으로 이미 존재하는ㄱ 것들과 연결이 되어서 일반적인 react.js 앱이됨
+
+두 방면에서 모두 좋음
+
+유저가 웹사이트에 가면 초기상태의 컴포넌트가 미리 생성된 html페이지를 보게 되고 상호작용이 일어나면 react.js 그걸 받아서 아주 잘 동작하게 됨
+
+seo에 정말 좋음. 구글 같은 검색엔진에게도 유저에게도 너무 좋음
+
+유저가 코드를 다운받아 react를 실행시키길 기다리지 않아도 되는것
+
+Link는 next.js 어플리케이션의 클라이언트 사이드 네비게이션을 제공
